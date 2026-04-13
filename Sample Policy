@@ -1,0 +1,51 @@
+```json
+{
+  "displayName": "Zero Trust - Require MFA and Compliant Device",
+  "state": "enabled",
+  "conditions": {
+    "users": {
+      "includeUsers": ["All"],
+      "excludeUsers": ["BreakGlassAccount1", "BreakGlassAccount2"]
+    },
+    "applications": {
+      "includeApplications": ["All"]
+    },
+    "clientAppTypes": [
+      "browser",
+      "mobileAppsAndDesktopClients"
+    ],
+    "signInRiskLevels": [
+      "medium",
+      "high"
+    ],
+    "platforms": {
+      "includePlatforms": [
+        "windows",
+        "macOS",
+        "iOS",
+        "android"
+      ]
+    },
+    "locations": {
+      "includeLocations": ["All"],
+      "excludeLocations": ["TrustedLocations"]
+    }
+  },
+  "grantControls": {
+    "operator": "AND",
+    "builtInControls": [
+      "mfa",
+      "compliantDevice"
+    ]
+  },
+  "sessionControls": {
+    "signInFrequency": {
+      "value": 8,
+      "type": "hours"
+    },
+    "persistentBrowser": {
+      "mode": "never"
+    }
+  }
+}
+```
