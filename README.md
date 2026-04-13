@@ -1,2 +1,27 @@
-# Zero-Trust
-This Zero Trust model enforces strict identity verification, device compliance, and risk-based access decisions before granting access to any application or resource. All access is continuously evaluated using Conditional Access policies, MFA, and real-time threat detection, aligning with modern Zero Trust and NIST security principles.
+```mermaid
+flowchart LR
+    A[User] --> B[Identity Provider - Entra ID]
+
+    B -->|Authenticate| C[MFA Enforcement]
+    C --> D[Conditional Access Policies]
+
+    D -->|Compliant Device Required| E[Device Trust]
+    D -->|Risk Evaluation| F[Risk-Based Access]
+
+    E --> G[Application Access Layer]
+    F --> G
+
+    G --> H[Microsoft 365]
+    G --> I[Internal Apps]
+    G --> J[Cloud Apps]
+
+    K[Device Management - Intune] --> E
+
+    L[Logging & Monitoring] --> M[SIEM / Sentinel]
+    M --> N[Threat Detection]
+    N --> O[Automated Response]
+
+    O --> D
+
+    P[Network Layer] -->|Micro-Segmentation| G
+```
