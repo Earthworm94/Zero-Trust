@@ -1,0 +1,49 @@
+```json
+{
+  "displayName": "Zero Trust - Admin Protection Policy",
+  "state": "enabled",
+  "conditions": {
+    "users": {
+      "includeRoles": [
+        "Global Administrator",
+        "Privileged Role Administrator",
+        "Security Administrator",
+        "Exchange Administrator",
+        "SharePoint Administrator"
+      ]
+    },
+    "applications": {
+      "includeApplications": ["All"]
+    },
+    "clientAppTypes": [
+      "browser",
+      "mobileAppsAndDesktopClients"
+    ],
+    "signInRiskLevels": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "locations": {
+      "includeLocations": ["All"],
+      "excludeLocations": ["TrustedLocations"]
+    }
+  },
+  "grantControls": {
+    "operator": "AND",
+    "builtInControls": [
+      "mfa",
+      "compliantDevice"
+    ]
+  },
+  "sessionControls": {
+    "signInFrequency": {
+      "value": 4,
+      "type": "hours"
+    },
+    "persistentBrowser": {
+      "mode": "never"
+    }
+  }
+}
+```
